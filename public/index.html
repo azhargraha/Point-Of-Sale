@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Of Sale</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- script files -->
+    <script defer src="/cleave.js"></script>
+    <script defer src="/console.js"></script>
+</head>
+<body>
+    <div class="main-page-container">
+        <div id="left-section-container">
+            <ul class="main-menu-container">
+                <li data-tab-target="#makanan" class="tab active">
+                    <div class="icon-container">
+                        <img src="/icons/makanan.svg" alt="makanan">
+                    </div>
+                    <h1>Makanan</h1>
+                </li>
+                <li data-tab-target="#minuman" class="tab">
+                    <div class="icon-container">
+                        <img src="/icons/minuman.svg" alt="minuman">
+                    </div>
+                    <h1>Minuman</h1>
+                </li>
+                <li data-tab-target="#tambahan" class="tab">
+                    <div class="icon-container">
+                        <img src="/icons/tambahan.svg" alt="tambahan">
+                    </div>
+                    <h1>Tambahan</h1>
+                </li>
+            </ul>
+        </div>
+        <div id="center-section-container">
+            <div class="menu-selection-box">
+                <div id="makanan" data-tab-content class="menu-selection-container active">
+                    <div class="menu-selection">
+                        <h1>Soto Sapi</h1>
+                        <h3>Rp 12.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Soto Ayam</h1>
+                        <h3>Rp 12.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Soto Bungkus</h1>
+                        <h3>Rp 15.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Mie Godog</h1>
+                        <h3>Rp 15.000</h3>
+                    </div>
+                </div>
+                <div id="minuman" data-tab-content class="menu-selection-container">
+                    <div class="menu-selection">
+                        <h1>Air Mineral Kecil</h1>
+                        <h3>Rp 3.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Teh Kotak</h1>
+                        <h3>Rp 5.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Teh Pucuk</h1>
+                        <h3>Rp 5.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Pulpy Orange</h1>
+                        <h3>Rp 5.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Floridina</h1>
+                        <h3>Rp 4.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Teh Sosro</h1>
+                        <h3>Rp 5.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Tora Café</h1>
+                        <h3>Rp 4.000</h3>
+                    </div>
+                </div>
+                <div id="tambahan" data-tab-content class="menu-selection-container">
+                    <div class="menu-selection">
+                        <h1>Kulit Crispy</h1>
+                        <h3>Rp 10.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Tahu Bacem</h1>
+                        <h3>Rp 2.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Tempe Bacem</h1>
+                        <h3>Rp 2.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Sate Telur Puyuh</h1>
+                        <h3>Rp 2.500</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Perkedel</h1>
+                        <h3>Rp 2.500</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Kerupuk Udang</h1>
+                        <h3>Rp 3.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Kerupuk Emping</h1>
+                        <h3>Rp 4.000</h3>
+                    </div>
+                    <div class="menu-selection">
+                        <h1>Kerupuk</h1>
+                        <h3>Rp 2.000</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="right-section-container">
+            <div class="pesanan-container">
+                <h1 id="judul-pesanan">Pesanan</h1>
+                <ul id="order-list-container">
+                    <h4 id="empty-order">Belum ada pemesanan</h4>
+                </ul>
+            </div>
+            <div id="pembayaran-container">
+                <div class="flex-row">
+                    <h1>Total Harga</h1>
+                    <h2  id="total-harga">Rp 0</h2>
+                </div>
+                <div id="tunai" class="flex-row">
+                    <h3>Tunai</h3>
+                    <div class="form-tunai flex-row">
+                        <label for="tunai">
+                            <h5>Rp</h5>
+                        </label>
+                        <input type="text" name="tunai" placeholder="Pecahan" class="form-uang-tunai" onfocusout="updateChangeAmount()">
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <h3>Kembalian</h3>
+                    <h5 id="jml-kembalian">Rp 0</h5>
+                </div>
+            </div>
+            <div class="buttons-container flex-row">
+                <button id="batal" class="text-only-button" onclick="removeAllOrder()">Batalkan</button>
+                <button id="bayar" type="submit" class="fill-button" onclick="payBtn()">Bayar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
